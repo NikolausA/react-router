@@ -1,12 +1,18 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/navbar";
+import { MainPage } from "./pages/main-page/main-page";
+import { Category } from "./pages/category/category";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Vite + React+ Tailwind</h1>
-    </>
+    <div className="flex flex-col h-screen box-border">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/category" element={<Category />} />
+      </Routes>
+    </div>
   );
 }
 
