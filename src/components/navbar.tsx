@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { AuthComponent } from "./auth-component";
 import logo from "../assets/logo.svg";
 
 export const Navbar = () => {
@@ -35,6 +36,7 @@ export const Navbar = () => {
         >
           location
         </NavLink>
+        <AuthComponent />
       </div>
     </div>
   );
