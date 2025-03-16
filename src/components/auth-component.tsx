@@ -18,7 +18,7 @@ export const AuthComponent = () => {
   return (
     <div className="text-[#202329]">
       {name ? (
-        <div className="flex" onClick={handleSignout}>
+        <div className="flex cursor-pointer" onClick={handleSignout}>
           <div>{name}</div>
           <ArrowRightStartOnRectangleIcon className=" w-7 h-7" />
         </div>

@@ -1,20 +1,33 @@
-import { useContext } from "react";
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
-import { AppContext } from "../../context";
+import { useEffect, useState } from "react";
+import { Navigate, useSearchParams } from "react-router-dom";
 import { CardsList } from "../../components/cards-list";
 import { Button } from "../../components/button";
-import { Character, Episode, Location } from "../../types";
+import { Character, Episode, Location, CategoryData } from "../../types";
+import { useGetCategoryInfinitively } from "../../hooks/useGetCategoryInfinitively";
+import { useCategoryParam } from "../../hooks/useCategoryParam";
 
-const validCategories = ["characters", "episodes", "locations"] as const;
-type CategoryType = (typeof validCategories)[number];
-const sortValues = ["ASC", "DESC"] as const;
-type SortValue = (typeof sortValues)[number];
+type SortValue = "ASC" | "DESC";
 
 export const Category = () => {
+  const [pageNumber, setPageNumber] = useState(1);
   const [sortParams, setSortParams] = useSearchParams({ createdSortBy: "ASC" });
-  const navigate = useNavigate();
-  const { category } = useParams<{ category: string }>();
-  const context = useContext(AppContext);
+  const categoryName = useCategoryParam();
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, [categoryName]);
+
+  const dataFromHook = useGetCategoryInfinitively(
+    categoryName || "",
+    pageNumber
+  );
+
+  if (!dataFromHook) {
+    return <Navigate to="/" />;
+  }
+
+  const { categoryData, loading, error, hasMore } = dataFromHook;
+
   const handleClick = () => {
     const currentSort = (sortParams.get("createdSortBy") as SortValue) || "ASC";
     const newSort: SortValue = currentSort === "ASC" ? "DESC" : "ASC";
@@ -23,23 +36,17 @@ export const Category = () => {
 
   const sort = (sortParams.get("createdSortBy") as SortValue) || "ASC";
 
-  if (!category || !validCategories.includes(category as CategoryType)) {
-    navigate("*");
-    return null;
-  }
-  if (!context) return <div>Loading...</div>;
+  let items: CategoryData = [];
 
-  let items: Character[] | Episode[] | Location[] = [];
-
-  switch (category) {
-    case "characters":
-      items = context.characters as Character[];
+  switch (categoryName) {
+    case "character":
+      items = categoryData as Character[];
       break;
-    case "episodes":
-      items = context.episodes as Episode[];
+    case "episode":
+      items = categoryData as Episode[];
       break;
-    case "locations":
-      items = context.locations as Location[];
+    case "location":
+      items = categoryData as Location[];
       break;
   }
 
@@ -51,22 +58,39 @@ export const Category = () => {
 
   return (
     <div>
-      <h1 className="text-3xl uppercase font-black my-3">{category}</h1>
+      <h1 className="text-3xl uppercase font-black my-3">{categoryName}</h1>
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
       <Button onClick={handleClick}>
         {`Сортировать элементы по ${sort === "ASC" ? "возрастанию" : "убыванию"}
         даты создания`}
       </Button>
-      {category === "characters" && (
+      {categoryName === "character" && (
         <CardsList<Character>
-          category={category}
+          category={categoryName}
           items={items as Character[]}
+          setPageNumber={setPageNumber}
+          loading={loading}
+          hasMore={hasMore}
         />
       )}
-      {category === "episodes" && (
-        <CardsList<Episode> category={category} items={items as Episode[]} />
+      {categoryName === "episode" && (
+        <CardsList<Episode>
+          category={categoryName}
+          items={items as Episode[]}
+          setPageNumber={setPageNumber}
+          loading={loading}
+          hasMore={hasMore}
+        />
       )}
-      {category === "locations" && (
-        <CardsList<Location> category={category} items={items as Location[]} />
+      {categoryName === "location" && (
+        <CardsList<Location>
+          category={categoryName}
+          items={items as Location[]}
+          setPageNumber={setPageNumber}
+          loading={loading}
+          hasMore={hasMore}
+        />
       )}
     </div>
   );

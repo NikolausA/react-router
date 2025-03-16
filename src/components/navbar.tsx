@@ -16,7 +16,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive ? `${linkStyles} ${activeLink}` : linkStyles
           }
-          to="/characters"
+          to="/character"
         >
           characters
         </NavLink>
@@ -24,7 +24,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive ? `${linkStyles} ${activeLink}` : linkStyles
           }
-          to="/episodes"
+          to="/episode"
         >
           episode
         </NavLink>
@@ -32,7 +32,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive ? `${linkStyles} ${activeLink}` : linkStyles
           }
-          to="/locations"
+          to="/location"
         >
           location
         </NavLink>

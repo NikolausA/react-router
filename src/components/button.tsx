@@ -1,5 +1,5 @@
 interface ButtonProps {
-  type: "submit" | "reset" | "button";
+  type?: "submit" | "reset" | "button";
   children: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
