@@ -13,7 +13,7 @@ const Category = lazy(() =>
   }))
 );
 const Element = lazy(() =>
-  import("../pages/element/element").then((module) => ({
+  import("./elementDetails/elementDetails").then((module) => ({
     default: module.Element,
   }))
 );

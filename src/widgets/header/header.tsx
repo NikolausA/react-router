@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { AuthComponent } from "../../components";
+import { NavLink, Link } from "react-router-dom";
+import { AuthComponent } from "../../features";
 import logo from "../../assets/logo.svg";
-import { Group, Image, NavLink, Box } from "@mantine/core";
+import { Group, Image, Box } from "@mantine/core";
 import styles from "./header.module.css";
 
 export const Header = () => {
@@ -12,29 +12,15 @@ export const Header = () => {
       </Link>
 
       <Group gap="xl" className={styles.navGroup}>
-        <NavLink
-          href="/character"
-          label="CHARACTERS"
-          className={styles.navLink}
-          classNames={{ label: styles.navLabel }}
-          active
-        />
-        <NavLink
-          href="/episode"
-          label="EPISODE"
-          className={styles.navLink}
-          classNames={{ label: styles.navLabel }}
-          active
-        />
-
-        <NavLink
-          href="/location"
-          label="LOCATION"
-          className={styles.navLink}
-          classNames={{ label: styles.navLabel }}
-          active
-        />
-
+        <NavLink to="/character" className={styles.navLink}>
+          CHARACTERS
+        </NavLink>
+        <NavLink to="/episode" className={styles.navLink}>
+          EPISODE
+        </NavLink>
+        <NavLink to="/location" className={styles.navLink}>
+          LOCATION
+        </NavLink>
         <AuthComponent />
       </Group>
     </Box>

@@ -1,0 +1,9 @@
+.inputLabel {
+  color: var(--mantine-color-dark-9);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.inputLabel[data-invalid] {
+  color: #ff6b6b;
+}

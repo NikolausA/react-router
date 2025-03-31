@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--mantine-spacing-md);
+  padding-bottom: var(--mantine-spacing-md);
+}
+
+.container a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,9 +1,10 @@
-import { Card } from "./card";
-import { useCallback, useRef } from "react";
+import styles from "./cardsList.module.css";
+import { Card } from "../";
 import { Link } from "react-router-dom";
-import defaultImage from "../assets//rickandmorty_defualt_image_2.jpeg";
+import { useRef, useCallback } from "react";
+import defaultImage from "../../assets/rickandmorty_defualt_image_2.jpeg";
 
-interface CardListProps<
+interface CardsListProps<
   T extends { id: number; name: string; image?: string }
 > {
   category: string;
@@ -12,7 +13,6 @@ interface CardListProps<
   hasMore: boolean;
   setPageNumber: (pageNumber: number | ((prev: number) => number)) => void;
 }
-
 export const CardsList = <
   T extends { id: number; name: string; image?: string }
 >({
@@ -21,7 +21,7 @@ export const CardsList = <
   setPageNumber,
   loading,
   hasMore,
-}: CardListProps<T>) => {
+}: CardsListProps<T>) => {
   const observer = useRef<IntersectionObserver | null>(null);
 
   const lastNodeRef = useCallback(
@@ -43,9 +43,9 @@ export const CardsList = <
   );
 
   return (
-    <div className="grid grid-cols-3 gap-3 pb-4">
+    <div className={styles.container}>
       {items.map((item, index) => (
-        <Link key={item.id} to={`/${category}/${item.id}`}>
+        <Link key={item.id} to={`/${category}/${item.id}`} state={item}>
           {items.length === index + 1 ? (
             <div ref={lastNodeRef}>
               <Card

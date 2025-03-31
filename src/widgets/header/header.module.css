@@ -11,30 +11,35 @@
 
 .navGroup {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 20px;
   align-items: center;
-  /* width: auto; */
   height: 40px;
 }
 
 .navLink {
   width: auto;
+  padding: 5px;
+  display: inline-flex;
   text-transform: uppercase;
   font-weight: 700;
   border-radius: var(--mantine-radius-sm);
-  color: inherit;
+  color: var(--mantine-color-dark-4);
   background-color: inherit;
+  text-decoration: none;
 
   &:hover {
     background-color: var(--mantine-color-dark-7);
     color: var(--mantine-color-white);
+    padding: 5px;
   }
 
-  &[data-active] {
+  &[aria-current="page"] {
     color: var(--mantine-color-gray-5);
   }
-}
 
-.navLabel {
-  font-size: var(--mantine-font-size-sm);
+  &[aria-current="page"]:hover {
+    background-color: inherit;
+  }
 }
