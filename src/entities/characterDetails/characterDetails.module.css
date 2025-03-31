@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  /* gap: var(--mantine-spacing-xl); */
+  padding: var(--mantine-spacing-lg);
+  color: var(--mantine-color-dark-5);
+}
+
+.image {
+  width: 150px;
+  flex: 0 0 300px;
+  border-radius: var(--mantine-radius-md);
+}
+
+.details {
+  flex: 1;
+}
+
+.name {
+  font-size: var(--mantine-font-size-xxl);
+  font-weight: 900;
+  margin-bottom: var(--mantine-spacing-md);
+}

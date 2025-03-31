@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
-import { CardsList } from "../../components/cards-list";
-import { Button } from "../../components/button";
+import { CardsList } from "../../widgets";
+import { Button } from "../../shared";
 import { Character, Episode, Location, CategoryData } from "../../types";
 import { useGetCategoryInfinitively } from "../../hooks/useGetCategoryInfinitively";
 import { useCategoryParam } from "../../hooks/useCategoryParam";
+import styles from "./category.module.css";
+import { Title } from "@mantine/core";
 
 type SortValue = "ASC" | "DESC";
 
@@ -21,6 +23,10 @@ export const Category = () => {
     categoryName || "",
     pageNumber
   );
+
+  if (categoryName === null) {
+    return <Navigate to="*" replace />;
+  }
 
   if (!dataFromHook) {
     return <Navigate to="/" />;
@@ -58,7 +64,7 @@ export const Category = () => {
 
   return (
     <div>
-      <h1 className="text-3xl uppercase font-black my-3">{categoryName}</h1>
+      <Title className={styles.title}>{categoryName}</Title>
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       <Button onClick={handleClick}>

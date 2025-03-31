@@ -1,7 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { SigninForm } from "../../components/signin-form";
+import { LoginForm } from "../../features";
 import { Credentials } from "../../types/credentials";
-import { useAuth } from "../../context/AuthProvider";
+import { useAuth } from "../../features/auth/model/AuthProvider";
+import { Paper, Title } from "@mantine/core";
+import styles from "./loginPage.module.css";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,9 +19,11 @@ export const LoginPage = () => {
     }
   };
   return (
-    <div className="bg-[#202329] mx-auto my-0 border-2 border-amber-50 p-5 rounded-xl">
-      <h2 className="uppercase font-medium">Login</h2>
-      <SigninForm onSubmit={handleSubmit} />
-    </div>
+    <Paper className={styles.container}>
+      <Title order={2} ta="center" mb="xl" className={styles.formTitile}>
+        Login
+      </Title>
+      <LoginForm onSubmit={handleSubmit} />
+    </Paper>
   );
 };

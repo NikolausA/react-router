@@ -1,0 +1,9 @@
+.detail {
+  font-size: var(--mantine-font-size-xl);
+  margin-bottom: var(--mantine-spacing-xs);
+  line-height: 1.4;
+}
+
+.label {
+  color: var(--mantine-color-blue-4);
+}
