@@ -2,9 +2,7 @@ import { createTheme } from "@mantine/core";
 
 export const theme = createTheme({
   fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
-  lineHeights: {
-    base: "1.5",
-  },
+  lineHeights: { base: "1.5" },
   defaultRadius: "sm",
   colors: {
     dark: [
@@ -21,4 +19,11 @@ export const theme = createTheme({
     ],
   },
   primaryColor: "dark",
+  breakpoints: {
+    xs: "480px", // Смартфоны
+    sm: "768px", // Планшеты
+    md: "1024px", // Небольшие ноутбуки
+    lg: "1280px", // Десктопы
+    xl: "1440px", // Большие экраны
+  },
 });

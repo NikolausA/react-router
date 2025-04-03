@@ -43,3 +43,45 @@
     background-color: inherit;
   }
 }
+
+@media (max-width: 768px) {
+  .navGroup {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 0;
+    height: 0;
+  }
+}
+
+.burger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.mobileNavLink {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--mantine-color-dark-4);
+  padding: 10px;
+}
+
+.mobileNavLink:hover {
+  background-color: var(--mantine-color-dark-7);
+  color: var(--mantine-color-white);
+}

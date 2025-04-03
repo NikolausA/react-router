@@ -1,11 +1,30 @@
 .root {
+  box-sizing: border-box;
   min-height: 100vh;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  /* position: initial; */
   color: var(--mantine-color-white);
   background-color: var(--mantine-color-dark-5);
   font-size: var(--mantine-font-size-md);
   line-height: var(--mantine-line-height);
+
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .root {
+    max-width: 100%;
+    padding: 1.5rem;
+    font-size: var(--mantine-font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .root {
+    padding: 1rem;
+    font-size: var(--mantine-font-size-xs);
+  }
 }
