@@ -1,3 +1,3 @@
-export * from "./navbar";
-export * from "./card";
-export * from "./cards-list";
+export * from "./error-boundary";
+export * from "./input";
+export * from "./private-route";

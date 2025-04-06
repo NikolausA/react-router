@@ -1,9 +1,12 @@
+import styles from "./mainPage.module.css";
+import { Title, Box } from "@mantine/core";
+
 export const MainPage = () => {
   return (
-    <div className="bg-[#202329] flex-1 ">
-      <h1 className="font-sans text-7xl font-black text-white m-7">
+    <Box className={styles.container}>
+      <Title className={styles.title} order={1}>
         The Rick and Morty
-      </h1>
-    </div>
+      </Title>
+    </Box>
   );
 };

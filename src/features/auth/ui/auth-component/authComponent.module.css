@@ -1,0 +1,17 @@
+.wrapper {
+  color: var(--mantine-color-dark-9);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    color: var(--mantine-color-red-6);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
