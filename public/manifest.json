@@ -1,0 +1,51 @@
+{
+  "name": "RickyAndMorty",
+  "short_name": "Ricky&Morty",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#242424",
+  "theme_color": "#242424",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/rickandmorty-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/icons/rickandmorty-72x72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/icons/rickandmorty-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/icons/rickandmorty-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/icons/rickandmorty-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/rickandmorty-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot.png",
+      "type": "image/png",
+      "sizes": "1918x886",
+      "form_factor": "wide",
+      "label": "Main screen"
+    }
+  ]
+}
